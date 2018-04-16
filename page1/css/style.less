@@ -1,0 +1,130 @@
+@padding: 20px;
+@autoWidth: calc(~"3.33% - 0.2em");
+@autoHeight: calc(~"3.33vh - 0.2em");
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #000;
+}
+
+.grid {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    //Grid布局
+    display: grid;
+    width: calc(~"100% - 6em");
+    height: calc(~"100vh - 6em");
+    //自动宽高
+    grid-auto-columns: calc(~"@{autoWidth} - @{padding}");
+    grid-auto-rows: calc(~"@{autoHeight} - @{padding}");
+    //位置居中
+    justify-content: center;
+    align-content: center;
+    grid-gap: @padding;
+}
+
+.grid-item {
+    a {
+        color: #fff;
+        font-size: 24px;
+        text-decoration: none;
+        display: block;
+        margin: 20px;
+    }
+    &:nth-child(1) {
+        grid-area: ~"8 / 1 /23 / 16";
+        background: #92DAD5;
+    }
+    &:nth-child(2) {
+        grid-area: ~"8 / 16 / 19 / 24";
+        background: #FFCAB6;
+    }
+    &:nth-child(3) {
+        grid-area: ~"2 / 18/ 8 / 24";
+        background: #4797B1;
+    }
+    &:nth-child(4) {
+        grid-area: ~"23 / 9 / 30 / 16";
+        background: #FF8C94;
+    }
+    &:nth-child(5) {
+        grid-area: ~"19 / 16 / 27 / 26";
+        background: #9E9CE4;
+    }
+    &:nth-child(6) {
+        grid-area: ~"1 / 4 / 8 / 12";
+        background: #F7F3CE;
+    }
+    &:nth-child(7) {
+        grid-area: ~"-1 / 12 / 8 / 18";
+        background: #F0DBD8;
+    }
+    &:nth-child(8){
+        grid-area: ~"12 / -5 / 19 / 1";
+        background: #FF8C94;
+    }
+    &:last-child {
+        grid-area: ~"23 / -1 / 30 / 9";
+        background: #4797B1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        p{
+            color: #fff;
+        }
+    }
+   
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .grid {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        //两列五行
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(5,1fr);
+        //居中
+        justify-content: stretch;
+        align-content: space-between;
+        grid-gap: 0;
+
+     }
+    
+    
+     //定义
+    .grid-item-loop(@n,@i: 0) when (@i <=@n) {
+      .grid-item{
+         &:nth-child(@{i}) {
+            grid-area:auto;
+         }
+       }
+       .grid-item-loop(@n,(@i + 1));
+       }
+    
+    .grid-item-loop(8);
+    
+    .grid-item{
+         &:last-child {
+             
+            grid-area:~"auto/1/auto/3";
+
+         }
+    }
+}
+

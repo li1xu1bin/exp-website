@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <title>Grid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="img/logo.png" alt=""></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><span>首页</span></a></li>
+                <li><a href="#"><span>导航一</span></a>
+                    <ul>
+                        <li><a href="#"><span>子导航一</span></a></li>
+                        <li><a href="#"><span>子导航二</span></a></li>
+                        <li><a href="#"><span>子导航三</span></a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span>导航二</span></a></li>
+                <li><a href="#"><span>导航三</span></a></li>
+                <li><a href="#"><span>导航四</span></a>
+                    <ul>
+                        <li><a href="#"><span>子导航一</span></a></li>
+                        <li><a href="#"><span>子导航二</span></a></li>
+                        <li><a href="#"><span>子导航三</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page-wrapper">
+        <div id="wrapper">
+            <section class="module-list"></section>
+            <section class="article-list">
+
+                <div class="article-title">
+                    <h2>栏目一</h2>
+                </div>
+            </section>
+            <section class="article-list">
+                <div class="article-title">
+                    <h2>栏目二</h2>
+                </div>
+            </section>
+            <section class="photo-list">
+                <div class="wrap-box">
+                    <h2>美图欣赏</h2>
+                </div>
+                <div class="photo-block">
+                    <div class="photo-item">
+                    </div>
+                    <div class="photo-item">
+                    </div>
+                    <div class="photo-item">
+                    </div>
+                    <div class="photo-item">
+                    </div>
+                </div>
+            </section>
+    <footer>
+        <div class="footer-info">
+            <div class="info">
+                <h3>信息：</h3>
+                <p>名称</p>
+                <p>邮箱</p>
+                <p>电话</p>
+            </div>
+            <div class="link">
+                <h3>友情链接：</h3>
+                <p><a href="#">百度</a></p>
+                <p><a href="#">百度</a></p>
+                <p><a href="#">百度</a></p>
+                <p><a href="#">百度</a></p>
+            </div>
+
+        </div>
+        <div class="copyright">
+            Copyright © 2016-2018
+        </div>
+    </footer>
+        </div>
+        
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      //导航按钮
+    (function ($) {
+    $(document).ready(function () {
+        $('nav').prepend('<div class="menu-button"></div>');
+        $('nav .menu-button').on('click', function () {
+            var menu = $(this).next('ul');
+            if (menu.hasClass('open')) {
+                menu.removeClass('open');
+            } else {
+                menu.addClass('open');
+            }
+            console.log("onclick");
+        });
+    });
+})(jQuery);
+    </script>
+</body>
+
+</html>
